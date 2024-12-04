@@ -1,0 +1,29 @@
+name: personal_flutter_challenge
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  blur: ^4.0.0
+  carousel_slider: ^5.0.0
+  flutter:
+    sdk: flutter
+  font_awesome_flutter: ^10.8.0
+  google_nav_bar: ^5.0.7
+  gradient_borders: ^1.0.1
+  gradient_icon: ^2.0.9
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  # assets:
+  #   - path
+  # fonts:
+  #   - asset: path
