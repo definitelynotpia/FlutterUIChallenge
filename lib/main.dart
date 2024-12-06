@@ -36,6 +36,11 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
+          ),
+        ),
       ),
       scrollBehavior: MyCustomScrollBehavior().copyWith(scrollbars: false),
       debugShowCheckedModeBanner: false, // hide debug banner
@@ -100,38 +105,14 @@ class _HomePageState extends State<HomePage>
 
     // append all screens to
     screens = [
-      {
-        'widget': billsDashboard2Screen,
-        'icon': Icon(Icons.payment, size: navbarIconSize),
-      },
-      {
-        'widget': billsDashboardScreen,
-        'icon': Icon(Icons.money, size: navbarIconSize),
-      },
-      {
-        'widget': cartScreen,
-        'icon': Icon(Icons.shopping_cart, size: navbarIconSize),
-      },
-      {
-        'widget': iotDashboardScreen,
-        'icon': Icon(Icons.lightbulb, size: navbarIconSize),
-      },
-      {
-        'widget': profileSettingsScreen,
-        'icon': Icon(Icons.person, size: navbarIconSize),
-      },
-      {
-        'widget': restaurantStoreScreen,
-        'icon': Icon(Icons.fastfood, size: navbarIconSize),
-      },
-      {
-        'widget': socialMediaFypScreen,
-        'icon': Icon(Icons.share, size: navbarIconSize),
-      },
-      {
-        'widget': instructionsScreen,
-        'icon': Icon(Icons.help, size: navbarIconSize),
-      },
+      {'widget': cartScreen, 'icon': const Icon(Icons.shopping_cart)},
+      {'widget': restaurantStoreScreen, 'icon': const Icon(Icons.fastfood)},
+      {'widget': socialMediaFypScreen, 'icon': const Icon(Icons.share)},
+      {'widget': billsDashboardScreen, 'icon': const Icon(Icons.money)},
+      {'widget': billsDashboard2Screen, 'icon': const Icon(Icons.payment)},
+      {'widget': iotDashboardScreen, 'icon': const Icon(Icons.lightbulb)},
+      {'widget': profileSettingsScreen, 'icon': const Icon(Icons.person)},
+      {'widget': instructionsScreen, 'icon': const Icon(Icons.help)},
     ];
 
     tabController = TabController(length: screens.length, vsync: this);

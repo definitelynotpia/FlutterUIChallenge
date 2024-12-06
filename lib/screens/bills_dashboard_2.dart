@@ -500,7 +500,7 @@ class _BillsDashboard2 extends State<BillsDashboard2> {
                         onPressed: () => {},
                         iconSize: 20,
                         icon: const FaIcon(
-                          FontAwesomeIcons.arrowDownWideShort,
+                          FontAwesomeIcons.sliders,
                           color: Colors.white,
                         ),
                       ),
