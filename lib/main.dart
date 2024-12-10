@@ -9,10 +9,19 @@ import './screens/iot_dashboard.dart';
 import './screens/profile_settings.dart';
 import './screens/restaurant_store.dart';
 import './screens/social_media_fyp.dart';
+// dotenv package
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future<void> main() async {
+  // To load the .env file contents into dotenv.
+  // NOTE: fileName defaults to .env and can be omitted in this case.
+  // Ensure that the filename corresponds to the path in step 1 and 2.
+  await dotenv.load();
   runApp(const MainApp());
 }
+
+// void main() {
+// }
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
   // Override behavior methods and getters like dragDevices
@@ -105,13 +114,13 @@ class _HomePageState extends State<HomePage>
 
     // append all screens to
     screens = [
-      {'widget': cartScreen, 'icon': const Icon(Icons.shopping_cart)},
-      {'widget': restaurantStoreScreen, 'icon': const Icon(Icons.fastfood)},
-      {'widget': socialMediaFypScreen, 'icon': const Icon(Icons.share)},
       {'widget': billsDashboardScreen, 'icon': const Icon(Icons.money)},
       {'widget': billsDashboard2Screen, 'icon': const Icon(Icons.payment)},
       {'widget': iotDashboardScreen, 'icon': const Icon(Icons.lightbulb)},
       {'widget': profileSettingsScreen, 'icon': const Icon(Icons.person)},
+      {'widget': cartScreen, 'icon': const Icon(Icons.shopping_cart)},
+      {'widget': socialMediaFypScreen, 'icon': const Icon(Icons.share)},
+      {'widget': restaurantStoreScreen, 'icon': const Icon(Icons.fastfood)},
       {'widget': instructionsScreen, 'icon': const Icon(Icons.help)},
     ];
 

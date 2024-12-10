@@ -508,7 +508,7 @@ class _BillsDashboard extends State<BillsDashboard> {
 
                   // promo and discount carousel
                   CarouselSlider(
-                    items: List<Widget>.generate(31, (int index) {
+                    items: List<Widget>.generate(3, (int index) {
                       // card
                       return Container(
                         decoration: BoxDecoration(
