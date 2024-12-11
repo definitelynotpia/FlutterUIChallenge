@@ -20,6 +20,7 @@ class _RestaurantStore extends State<RestaurantStore> {
   final Color orange = const Color(0xffe97102);
 
   // search
+  // ignore: unused_field
   String? _searchTerm = "";
 
   double rating = 0;

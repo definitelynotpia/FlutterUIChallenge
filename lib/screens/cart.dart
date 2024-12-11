@@ -25,21 +25,17 @@ class _Cart extends State<Cart> {
       final response =
           await http.get(Uri.parse('https://fakestoreapi.com/products'));
       if (response.statusCode == 200) {
-        print("API Response: ${response.body}"); // Debug output
         return json.decode(response.body);
       } else {
-        print("Failed to load products. Status Code: ${response.statusCode}");
         throw Exception('Failed to load products');
       }
     } catch (e) {
-      print("Error fetching products: $e");
-      throw e;
+      rethrow;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(

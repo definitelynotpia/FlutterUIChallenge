@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 // packages
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:pexels_api/pexels_api.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:http/http.dart' as http;
 
 class SocialMediaFyp extends StatefulWidget {
   const SocialMediaFyp({super.key});
@@ -62,9 +60,6 @@ class _SocialMediaFyp extends State<SocialMediaFyp> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: const Color(0xff1f1f1f),
       extendBody: true,
