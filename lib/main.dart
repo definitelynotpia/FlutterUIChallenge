@@ -9,6 +9,8 @@ import './screens/iot_dashboard.dart';
 import './screens/profile_settings.dart';
 import './screens/restaurant_store.dart';
 import './screens/social_media_fyp.dart';
+import './screens/food_delivery.dart';
+import './screens/order_details.dart';
 // dotenv package
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -79,6 +81,8 @@ class _HomePageState extends State<HomePage>
   final Key profileSettings = const PageStorageKey("profileSettings");
   final Key restaurantStore = const PageStorageKey("restaurantStore");
   final Key socialMediaFyp = const PageStorageKey("socialMediaFyp");
+  final Key foodDelivery = const PageStorageKey("foodDelivery");
+  final Key orderDetails = const PageStorageKey("orderDetails");
 
   late Instructions instructionsScreen;
   late BillsDashboard billsDashboardScreen;
@@ -88,6 +92,8 @@ class _HomePageState extends State<HomePage>
   late ProfileSettings profileSettingsScreen;
   late RestaurantStore restaurantStoreScreen;
   late SocialMediaFyp socialMediaFypScreen;
+  late FoodDelivery foodDeliveryScreen;
+  late OrderDetails orderDetailsScreen;
 
   late List<Map<String, dynamic>> screens; // list of pages
 
@@ -111,9 +117,13 @@ class _HomePageState extends State<HomePage>
     profileSettingsScreen = ProfileSettings(key: profileSettings);
     restaurantStoreScreen = RestaurantStore(key: restaurantStore);
     socialMediaFypScreen = SocialMediaFyp(key: socialMediaFyp);
+    foodDeliveryScreen = FoodDelivery(key: foodDelivery);
+    orderDetailsScreen = OrderDetails(key: orderDetails);
 
     // append all screens to
     screens = [
+      {'widget': foodDeliveryScreen, 'icon': const Icon(Icons.money)},
+      {'widget': orderDetailsScreen, 'icon': const Icon(Icons.money)},
       {'widget': billsDashboardScreen, 'icon': const Icon(Icons.money)},
       {'widget': billsDashboard2Screen, 'icon': const Icon(Icons.payment)},
       {'widget': iotDashboardScreen, 'icon': const Icon(Icons.lightbulb)},

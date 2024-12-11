@@ -8,6 +8,8 @@ class OrderDetails extends StatefulWidget {
 }
 
 class _OrderDetails extends State<OrderDetails> {
+  final Color orange = const Color(0xffe48f18);
+
   @override
   Widget build(BuildContext context) {
     return Container();
