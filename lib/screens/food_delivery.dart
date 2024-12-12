@@ -34,7 +34,9 @@ class _FoodDelivery extends State<FoodDelivery> {
   // Define imageUrls as a Future
   late Future<List<String>> imageUrls;
 
+  // carousel slider controller
   final CarouselSliderController _controller = CarouselSliderController();
+  var currentPage = 0;
 
   @override
   void initState() {
@@ -216,80 +218,53 @@ class _FoodDelivery extends State<FoodDelivery> {
                               items: List<Widget>.generate(3, (int index) {
                                 final image = imageUrls[index];
                                 // card
-                                return Column(children: [
-                                  Stack(
-                                    children: [
-                                      // image
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(22),
-                                        child: Image.network(
-                                          image,
-                                          height: 220,
-                                          width: screenWidth * 0.93,
-                                          fit: BoxFit.cover,
-                                        ),
+                                return Stack(
+                                  children: [
+                                    // image
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(22),
+                                      child: Image.network(
+                                        image,
+                                        height: 220,
+                                        width: screenWidth * 0.93,
+                                        fit: BoxFit.cover,
                                       ),
-
-                                      // shadow and text
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(22),
-                                          gradient: LinearGradient(
-                                            colors: [
-                                              Colors.transparent,
-                                              Colors.black.withOpacity(0.7),
-                                            ],
-                                            stops: const [0.2, 0.9],
-                                            begin: Alignment.topCenter,
-                                            end: Alignment.bottomCenter,
-                                          ),
-                                        ),
-                                        child: Align(
-                                          alignment: Alignment.bottomCenter,
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 15, vertical: 30),
-                                            child: Text(
-                                              "Proident minim reprehenderit non cupidatat.",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: white,
-                                                fontSize: 26,
-                                                fontWeight: FontWeight.bold,
-                                                height: 1,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Flexible(
-                                    child: ListView.builder(
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount: 3,
-                                      itemBuilder: (context, page) {
-                                        return GestureDetector(
-                                          onTap: () =>
-                                              _controller.animateToPage(page),
-                                          child: Container(
-                                            width: 12.0,
-                                            height: 12.0,
-                                            margin: const EdgeInsets.symmetric(
-                                                vertical: 8.0, horizontal: 4.0),
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Colors.black.withOpacity(
-                                                  page == index ? 0.9 : 0.4),
-                                            ),
-                                          ),
-                                        );
-                                      },
                                     ),
-                                  ),
-                                ]);
+
+                                    // shadow and text
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(22),
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Colors.transparent,
+                                            Colors.black.withOpacity(0.7),
+                                          ],
+                                          stops: const [0.2, 0.9],
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                        ),
+                                      ),
+                                      child: Align(
+                                        alignment: Alignment.bottomCenter,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 15, vertical: 30),
+                                          child: Text(
+                                            "Proident minim reprehenderit non cupidatat.",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: white,
+                                              fontSize: 26,
+                                              fontWeight: FontWeight.bold,
+                                              height: 1,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
                               }),
                               carouselController: _controller,
                               options: CarouselOptions(
@@ -302,8 +277,40 @@ class _FoodDelivery extends State<FoodDelivery> {
                                 autoPlay: false,
                                 enlargeCenterPage: true,
                                 enlargeFactor: 0.22,
-                                // onPageChanged: callbackFunction,
+                                onPageChanged: (index, reason) {
+                                  setState(() {
+                                    currentPage = index;
+                                  });
+                                },
                                 scrollDirection: Axis.horizontal,
+                              ),
+                            ),
+
+                            // carousel page indicator
+                            SizedBox(
+                              height: 30,
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: 3,
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () =>
+                                        _controller.animateToPage(index),
+                                    child: Container(
+                                      width: 10,
+                                      height: 10,
+                                      margin: const EdgeInsets.symmetric(
+                                          vertical: 8.0, horizontal: 4.0),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: (index == currentPage)
+                                            ? yellow
+                                            : grey,
+                                      ),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ]);
@@ -319,7 +326,7 @@ class _FoodDelivery extends State<FoodDelivery> {
                     children: [
                       // special menu title
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        padding: const EdgeInsets.only(bottom: 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,

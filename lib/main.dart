@@ -122,7 +122,6 @@ class _HomePageState extends State<HomePage>
 
     // append all screens to
     screens = [
-      {'widget': foodDeliveryScreen, 'icon': const Icon(Icons.money)},
       {'widget': orderDetailsScreen, 'icon': const Icon(Icons.money)},
       {'widget': billsDashboardScreen, 'icon': const Icon(Icons.money)},
       {'widget': billsDashboard2Screen, 'icon': const Icon(Icons.payment)},
@@ -131,6 +130,7 @@ class _HomePageState extends State<HomePage>
       {'widget': cartScreen, 'icon': const Icon(Icons.shopping_cart)},
       {'widget': socialMediaFypScreen, 'icon': const Icon(Icons.share)},
       {'widget': restaurantStoreScreen, 'icon': const Icon(Icons.fastfood)},
+      {'widget': foodDeliveryScreen, 'icon': const Icon(Icons.money)},
       {'widget': instructionsScreen, 'icon': const Icon(Icons.help)},
     ];
 
